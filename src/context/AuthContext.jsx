@@ -7,7 +7,7 @@ export default function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    if (token) {
+    if (token && token !== "null" && token !== "undefined") {
       fetchUser();
     }
   }, [token]);
