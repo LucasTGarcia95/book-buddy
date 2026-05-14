@@ -71,42 +71,59 @@ export default function Account() {
   if (!user) return <p>Loading account...</p>;
 
   return (
-    <div>
-      <h1>Your Account</h1>
+    <div className="account-page">
+      <div className="account-card">
+        <h1 className="account-title">Your Account</h1>
 
-      <p>
-        <strong>Name:</strong> {user.firstname} {user.lastname}
-      </p>
-      <p>
-        <strong>Email:</strong> {user.email}
-      </p>
+        <div className="account-info">
+          <p>
+            <strong>Name:</strong> {user.firstname} {user.lastname}
+          </p>
+          <p>
+            <strong>Email:</strong> {user.email}
+          </p>
+        </div>
 
-      <button onClick={logout}>Log Out</button>
+        <button onClick={logout} className="wax-button">
+          Log Out
+        </button>
 
-      <h2>Your Reservations</h2>
+        <h2 className="account-subtitle">Your Reservations</h2>
 
-      {error && <p style={{ color: "red" }}>{error}</p>}
+        {error && <p className="account-error">{error}</p>}
 
-      {reservations.length === 0 ? (
-        <p>You have no active reservations.</p>
-      ) : (
-        <ul>
-          {reservations.map((res) => (
-            <li key={res.id}>
-              <Link to={`/books/${res.book.id}`}>
-                {res.book.title} — {res.book.author}
-              </Link>
+        {reservations.length === 0 ? (
+          <p className="account-empty">You have no active reservations.</p>
+        ) : (
+          <ul className="reservation-list">
+            {reservations.map((res) => (
+              <li key={res.id} className="reservation-item">
+                <div className="reservation-left">
+                  <img
+                    src={res.coverimage}
+                    alt={res.title}
+                    className="reservation-thumb"
+                  />
 
-              <button
-                onClick={() => handleReturn(res.id)}
-                style={{ marginLeft: "10px" }}
-              >
-                Return Book
-              </button>
-            </li>
-          ))}
-        </ul>
-      )}
+                  <Link
+                    to={`/books/${res.bookid}`}
+                    className="reservation-link"
+                  >
+                    {res.title} — {res.author}
+                  </Link>
+                </div>
+
+                <button
+                  onClick={() => handleReturn(res.id)}
+                  className="wax-button small-wax"
+                >
+                  Return Book
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </div>
   );
 }

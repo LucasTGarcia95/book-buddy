@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import NavBar from "./components/NavBar";
+import Header from "./components/Header";
 
 import BookList from "./pages/BookList";
 import BookDetails from "./pages/BookDetails";
@@ -9,7 +10,8 @@ import Account from "./pages/Account";
 
 export default function App() {
   return (
-    <>
+    <div className="app-container">
+      <Header />
       <NavBar />
 
       <Routes>
@@ -23,6 +25,6 @@ export default function App() {
         <Route path="/account" element={<Account />} />
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
-    </>
+    </div>
   );
 }

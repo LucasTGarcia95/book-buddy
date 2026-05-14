@@ -7,26 +7,18 @@ export default function NavBar() {
 
   return (
     <nav style={{ padding: "10px", borderBottom: "1px solid #ccc" }}>
-      <Link to="/books" style={{ marginRight: "15px" }}>
-        Books
-      </Link>
+      <Link to="/books">Books</Link>
 
       {!user && (
         <>
-          <Link to="/login" style={{ marginRight: "15px" }}>
-            Login
-          </Link>
-          <Link to="/register" style={{ marginRight: "15px" }}>
-            Register
-          </Link>
+          <Link to="/login">Login</Link>
+          <Link to="/register">Register</Link>
         </>
       )}
 
       {user && (
         <>
-          <Link to="/account" style={{ marginRight: "15px" }}>
-            Account
-          </Link>
+          <Link to="/account">Account</Link>
         </>
       )}
     </nav>

@@ -39,7 +39,6 @@ export default function Register() {
       }
 
       login(result.token);
-
       navigate("/account");
     } catch (err) {
       setError("Something went wrong during registration");
@@ -47,46 +46,50 @@ export default function Register() {
   }
 
   return (
-    <div>
-      <h1>Register</h1>
+    <div className="login-page">
+      <div className="login-card">
+        <h1 className="login-title">Create Account</h1>
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="First Name"
-          value={firstname}
-          onChange={(e) => setFirstname(e.target.value)}
-          required
-        />
+        <form onSubmit={handleSubmit} className="login-form">
+          <input
+            type="text"
+            placeholder="First Name"
+            value={firstname}
+            onChange={(e) => setFirstname(e.target.value)}
+            required
+          />
 
-        <input
-          type="text"
-          placeholder="Last Name"
-          value={lastname}
-          onChange={(e) => setLastname(e.target.value)}
-          required
-        />
+          <input
+            type="text"
+            placeholder="Last Name"
+            value={lastname}
+            onChange={(e) => setLastname(e.target.value)}
+            required
+          />
 
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
 
-        <input
-          type="password"
-          placeholder="Password (min 8 chars)"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+          <input
+            type="password"
+            placeholder="Password (min 8 chars)"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
 
-        <button type="submit">Create Account</button>
-      </form>
+          <button type="submit" className="login-button">
+            Create Account
+          </button>
 
-      {error && <p style={{ color: "red" }}>{error}</p>}
+          {error && <p className="login-error">{error}</p>}
+        </form>
+      </div>
     </div>
   );
 }

@@ -32,7 +32,6 @@ export default function Login() {
       }
 
       login(result.token);
-
       navigate("/account");
     } catch (err) {
       setError("Something went wrong");
@@ -40,26 +39,32 @@ export default function Login() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h1>Login</h1>
+    <div className="login-page">
+      <div className="login-card">
+        <h1 className="login-title">Login</h1>
 
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
+        <form onSubmit={handleSubmit} className="login-form">
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
-      <button type="submit">Log In</button>
+          <button type="submit" className="login-button">
+            Log In
+          </button>
 
-      {error && <p style={{ color: "red" }}>{error}</p>}
-    </form>
+          {error && <p className="login-error">{error}</p>}
+        </form>
+      </div>
+    </div>
   );
 }
