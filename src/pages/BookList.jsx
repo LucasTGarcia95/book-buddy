@@ -34,7 +34,7 @@ export default function BookList() {
       <input
         type="text"
         className="book-search"
-        placeholder="Search for a book or author..."
+        placeholder="Search by title or author..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
@@ -42,23 +42,22 @@ export default function BookList() {
       <div className="book-grid">
         {filteredBooks.map((book) => (
           <div key={book.id} className="book-card">
-            <div className="book-content">
-              <h3 className="book-title">{book.title}</h3>
+            {book.coverimage && (
+              <img
+                src={book.coverimage}
+                alt={book.title}
+                className="book-card-cover"
+              />
+            )}
 
-              {book.coverimage && (
-                <img
-                  src={book.coverimage}
-                  alt={book.title}
-                  className="book-cover"
-                />
-              )}
+            <div className="book-card-info">
+              <h3 className="book-card-title">{book.title}</h3>
+              <p className="book-card-author">{book.author}</p>
 
-              <p className="book-author">{book.author}</p>
+              <Link to={`/books/${book.id}`} className="book-card-button">
+                View Details
+              </Link>
             </div>
-
-            <Link to={`/books/${book.id}`} className="details-button">
-              View Details
-            </Link>
           </div>
         ))}
       </div>

@@ -62,7 +62,7 @@ export default function BookDetails() {
   if (!book) return <p>Loading book...</p>;
 
   return (
-    <div>
+    <div className="book-details-page">
       <h1>{book.title}</h1>
       <h3>by {book.author}</h3>
 
@@ -78,7 +78,11 @@ export default function BookDetails() {
 
       {/* Reserve Button */}
       {token ? (
-        <button onClick={handleReserve} disabled={!book.available}>
+        <button
+          className="reserve-button"
+          onClick={handleReserve}
+          disabled={!book.available}
+        >
           {book.available ? "Reserve Book" : "Already Reserved"}
         </button>
       ) : (
